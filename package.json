@@ -1,7 +1,7 @@
 {
-  "name": "mejsla-ts-cirkel-get-started",
+  "name": "programming-typescript",
   "version": "1.0.0",
-  "description": "Länkar, tips och trix för den Node- och TypeScript-ovane",
+  "description": "Studiecirkel",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib"
@@ -28,15 +28,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gustafc@github.com/gustafc/mejsla-ts-cirkel-get-started.git"
+    "url": "git+https://mikaelstaldal@github.com/mikaelstaldal/programming-typescript.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gustafc/mejsla-ts-cirkel-get-started/issues"
+    "url": "https://github.com/mikaelstaldal/programming-typescript/issues"
   },
-  "homepage": "https://github.com/gustafc/mejsla-ts-cirkel-get-started#readme",
+  "homepage": "https://github.com/mikaelstaldal/programming-typescript#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
