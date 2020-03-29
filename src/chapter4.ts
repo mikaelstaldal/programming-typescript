@@ -66,6 +66,26 @@ function f2(...args: unknown[]) { console.log(...args) }
 f1(1,2,3)
 f2(1,2,3)
 
+// Sid 64 - overloaded function types with properties
+
+type WarnUser = {
+    (warn: string): void
+    wasCalled: boolean;
+}
+
+function warnUser(warning: string) {
+    if (warnUser.wasCalled) {
+        return;
+    }
+    warnUser.wasCalled = true;
+    console.warn(warning);
+}
+
+warnUser.wasCalled = false;
+
+warnUser("foo");
+warnUser("bar");
+
 // Sid 77 - Using bounded polymorphism to model arity & exercise 4
 
 function fill(length: number, value: string, upper: boolean): string[] {
