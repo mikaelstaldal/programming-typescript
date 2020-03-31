@@ -33,7 +33,7 @@ function print(this: string) {
     console.log(this)
 }
 print.call("foo")
-// "foo".print() - does not work?
+// "foo".print() // does not work?
 
 // Sid 58 - contextual typing
 function callMe(f: (s: string) => void) {

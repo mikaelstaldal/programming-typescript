@@ -2,7 +2,7 @@
   "name": "programming-typescript",
   "version": "1.0.0",
   "description": "Studiecirkel",
-  "main": "lib/chapter4.js",
+  "main": "lib/chapter5.js",
   "directories": {
     "lib": "lib"
   },
@@ -20,7 +20,7 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "tsc",
-    "start": "node lib/chapter4.js",
+    "start": "node lib/chapter5.js",
     "prettier": "prettier --write src/**/*.ts",
     "test": "jest",
     "lint": "tslint -p tsconfig.json",
