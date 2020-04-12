@@ -1,3 +1,5 @@
+export const chapter4 = "chapter4"
+
 // Sid 46 - declaring functions
 let greet = (name: String) => 'hello ' + name
 console.log(greet("World"))
@@ -131,3 +133,19 @@ console.log(is([42, 43], [42, 44])) // false
 //console.log(is(1, 1, 1)) // true
 
 // Hur jämför man två arrayer?
+
+type Is = <T>(...args: T[]) => boolean
+
+const is2: Is = (...args) => {
+  let [head, ...tail] = args;
+  console.log(
+    "head: " + head + " tail: " + tail + " tail.length: " + tail.length
+  );
+  if (tail.length === 0) {
+    return true;
+  }
+  let [head2] = tail;
+  console.log("head2: " + head2);
+
+  return head === head2 && is2(...tail);
+};

@@ -1,3 +1,5 @@
+export const chapter5 = "chapter5"
+
 // Sid 89 - Using this as a Return Type
 
 class Printer {
