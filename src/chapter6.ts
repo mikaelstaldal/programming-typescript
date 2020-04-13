@@ -48,7 +48,7 @@ function digitValue(digit: Digit) {
     Six: 6,
     Seven: 7,
     Eight: 8,
-    Nine: 9
+    Nine: 9,
   };
   return r[digit];
 }
@@ -70,13 +70,13 @@ type B = Pick<A, "a" | "b">;
 let a: A = {
   a: "foo",
   b: 17,
-  c: true
+  c: true,
 };
 console.log(a);
 
 let b: B = {
   a: "foo",
-  b: 17
+  b: 17,
 };
 console.log(b);
 
@@ -110,7 +110,7 @@ let four: E = 4;
 let globalCache = {
   get(key: string) {
     return "user";
-  }
+  },
 };
 
 let userId = fetchUser();

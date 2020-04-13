@@ -4,7 +4,7 @@ let a: number = 1 + 2;
 let b: number = 1 + 3;
 let c: { banana: number; apple: number } = {
   apple: a,
-  banana: b
+  banana: b,
 };
 let d: number = c.apple;
 

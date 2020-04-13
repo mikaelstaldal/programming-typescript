@@ -107,7 +107,7 @@ const Shoe: {
       case "Sneaker":
         return new Sneaker();
     }
-  }
+  },
 };
 
 let boot = Shoe.create("Boot");

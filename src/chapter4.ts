@@ -41,7 +41,7 @@ print.call("foo");
 function callMe(f: (s: string) => void) {
   f("me");
 }
-callMe(s => console.log(s));
+callMe((s) => console.log(s));
 callMe(console.log);
 
 // Sid 60 - overloaded function types
