@@ -102,10 +102,7 @@ function full(value: string, length: number): string[] {
   return Array.from({ length }, () => value);
 }
 
-function call<T extends [unknown, string, ...unknown[]], R>(
-  f: (...args: T) => R,
-  ...args: T
-): R {
+function call<T extends [unknown, string, ...unknown[]], R>(f: (...args: T) => R, ...args: T): R {
   return f(...args);
 }
 
@@ -145,9 +142,7 @@ type Is = <T>(...args: T[]) => boolean;
 
 const is2: Is = (...args) => {
   let [head, ...tail] = args;
-  console.log(
-    "head: " + head + " tail: " + tail + " tail.length: " + tail.length
-  );
+  console.log("head: " + head + " tail: " + tail + " tail.length: " + tail.length);
   if (tail.length === 0) {
     return true;
   }
