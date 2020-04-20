@@ -93,6 +93,34 @@ t[0] = 17;
 console.log(t);
 // readonly?
 
+// Sid 152 - simulating nominal types
+
+type CompanyID = string & { readonly brand: unique symbol };
+type OrderID = string & { readonly brand: unique symbol };
+type UserID = string & { readonly brand: unique symbol };
+type ID = CompanyID | OrderID | UserID;
+
+function CompanyID(id: string) {
+  return id as CompanyID;
+}
+
+function OrderID(id: string) {
+  return id as OrderID;
+}
+
+function UserID(id: string) {
+  return id as UserID;
+}
+
+let company = CompanyID("company");
+let order = OrderID("order");
+let user1 = UserID("user1");
+
+let user2: UserID = user1;
+// let company2: CompanyID = user1; // error
+let s: string = order;
+console.log(s);
+
 // Exercise 3
 
 type Exclusive<T, U> =
