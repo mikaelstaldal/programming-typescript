@@ -97,8 +97,8 @@ console.log(t);
 
 type CompanyID = string & { readonly brand: unique symbol };
 type OrderID = string & { readonly brand: unique symbol };
-type UserID = string & { readonly brand: unique symbol };
-type ID = CompanyID | OrderID | UserID;
+type UserID = number & { readonly brand: unique symbol };
+type EmployeeID = number & { readonly brand: unique symbol };
 
 function CompanyID(id: string) {
   return id as CompanyID;
@@ -108,24 +108,29 @@ function OrderID(id: string) {
   return id as OrderID;
 }
 
-function UserID(id: string) {
+function UserID(id: number) {
   return id as UserID;
+}
+
+function EmployeeID(id: number) {
+  return id as EmployeeID;
 }
 
 let company = CompanyID("company");
 let order = OrderID("order");
-let user1 = UserID("user1");
+let user = UserID(17);
+let employee = EmployeeID(27);
 
-let user2: UserID = user1;
-// let company2: CompanyID = user1; // error
+// let company2: CompanyID = order; // error
+// let user2: UserID = employee; // error
 let s: string = order;
 console.log(s);
+let n: number = user;
+console.log(n);
 
 // Exercise 3
 
-type Exclusive<T, U> =
-  | (T extends U ? (U extends T ? never : T) : T)
-  | (U extends T ? (T extends U ? never : U) : U);
+type Exclusive<T, U> = (T extends U ? never : T) | (U extends T ? never : U);
 
 type E = Exclusive<1 | 2 | 3, 2 | 3 | 4>;
 let one: E = 1;
@@ -147,3 +152,21 @@ userId.toUpperCase();
 function fetchUser() {
   return globalCache.get("userId");
 }
+
+
+// complex enum, like in Java
+// https://github.com/gustafc/mejsla-ts-exercises/blob/master/src/hacking/ch06EnumsWithKeyOf.ts
+
+const TimeUnit = {
+  MILLIS: 1,
+  SECONDS: 1000,
+  MINUTES: 60_000,
+};
+
+type TimeUnit = keyof typeof TimeUnit;
+
+function toMillis(n: number, unit: TimeUnit): number {
+  return n * TimeUnit[unit];
+}
+
+console.log(toMillis(5, "MINUTES"));
