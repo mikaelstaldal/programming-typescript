@@ -1,4 +1,4 @@
-export const chapter4 = "chapter4";
+export default null; // Force module mode
 
 // Sid 46 - declaring functions
 let greet = (name: String) => "hello " + name;

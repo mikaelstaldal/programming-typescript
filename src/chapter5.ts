@@ -1,4 +1,4 @@
-export const chapter5 = "chapter5";
+export default null; // Force module mode
 
 // Sid 89 - Using this as a Return Type
 

@@ -1,1 +1,1 @@
-export const test = "test";
+export default null; // Force module mode

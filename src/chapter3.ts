@@ -1,4 +1,4 @@
-export const chapter3 = "chapter3";
+export default null; // Force module mode
 
 let a: number = 1 + 2;
 let b: number = 1 + 3;

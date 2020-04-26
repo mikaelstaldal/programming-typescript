@@ -1,4 +1,4 @@
-export const chapter6 = "chapter6";
+export default null; // Force module mode
 
 // Sid 123 - the const type
 let d: (number | { x: number })[] = [1, { x: 2 }];
