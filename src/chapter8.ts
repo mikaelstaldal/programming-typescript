@@ -43,8 +43,39 @@ async function asyncAwait() {
   } catch (e) {
     console.error(e);
   } finally {
-    console.log("Klart");
+    console.log("Halvklart");
   }
 }
 
 asyncAwait();
+
+// Exercise 1
+
+function promisify<A, R>(fn: (arg: A, callback: (err: unknown, result: R | null) => void) => void) {
+  return (arg: A) =>
+    new Promise<R>((resolve, reject) => {
+      fn(arg, (err, result) => {
+        if (result) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+    });
+}
+
+const readFilePromise2 = promisify(readFile);
+
+function promiseChain2() {
+  return readFilePromise2("filename")
+    .then((buffer) => buffer.toString("UTF-8"))
+    .then((filename) => promisify(readFile)(filename))
+    .then((buffer) => buffer.toString("UTF-8"))
+    .then((s) => console.log(`File content: ${s}`))
+    .catch((error) => console.error(error))
+    .finally(() => console.log("Färdig"));
+}
+
+promiseChain2();
+
+// Exercise 3 - MainThread.ts etc.
