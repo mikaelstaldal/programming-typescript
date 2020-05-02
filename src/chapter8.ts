@@ -30,6 +30,14 @@ function promiseChain() {
 
 promiseChain();
 
+function sleep(milliseconds?: number): Promise<void> {
+  return new Promise((resolve, _) => {
+    setTimeout(() => {
+      resolve(undefined);
+    }, milliseconds ?? 0);
+  });
+}
+
 // Sid 183-184 - async and await
 
 // transpileras await -> yield och en wrapper-funktion "__awaiter"
@@ -78,4 +86,4 @@ function promiseChain2() {
 
 promiseChain2();
 
-// Exercise 3 - MainThread.ts etc.
+// Exercise 3 - MainThread.ts, ChildThread.ts, Messages.ts, TypesafeMessaging.ts
