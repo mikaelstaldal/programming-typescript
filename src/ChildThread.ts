@@ -3,11 +3,11 @@ import { Messages } from "./Messages";
 
 console.log("child start");
 
-new Receiver<Messages>((listener) => process.on("message", listener))
+const receiver = new Receiver<Messages>()
   // .on("abc", _ => {}) // fel
   .on("foo", foo)
-  .on("bar", bar)
-  .listen();
+  .on("bar", bar);
+process.on("message", receiver.dispatch);
 
 console.log("child listening");
 

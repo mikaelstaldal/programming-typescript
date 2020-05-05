@@ -7,8 +7,6 @@ export class Sender<Messages extends Record<PropertyKey, object>> {
 }
 
 export class Receiver<Messages extends Record<PropertyKey, object>> {
-  constructor(private _on: (listener: (message: object) => void) => void) {}
-
   private events = new Map<keyof Messages, (data: any) => void>();
 
   on<K extends keyof Messages>(type: K, listener: (data: Messages[K]) => void) {
@@ -16,9 +14,7 @@ export class Receiver<Messages extends Record<PropertyKey, object>> {
     return this;
   }
 
-  listen() {
-    this._on((message: any) => {
-      this.events.get(message.type)?.(message.data);
-    });
+  dispatch(message: any) {
+    this.events.get(message.type)?.(message.data);
   }
 }
