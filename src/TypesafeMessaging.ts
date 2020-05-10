@@ -14,7 +14,11 @@ export class Receiver<Messages extends Record<PropertyKey, object>> {
     return this;
   }
 
-  dispatch(message: any) {
-    this.events.get(message.type)?.(message.data);
-  }
+  readonly dispatch = (message: any) => {
+    try {
+      this.events.get(message.type)?.(message.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 }
