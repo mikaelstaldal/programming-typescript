@@ -8,7 +8,7 @@ const child = fork("./lib/ChildThread.js");
 
 console.log(`child ${child.pid} forked`);
 
-const sender = new Sender<Messages>((message) => child.send(message));
+const sender = Sender<Messages>((message) => child.send(message));
 
 // sender.send("abc", {}); // fel
 // sender.send("foo", {}); // fel

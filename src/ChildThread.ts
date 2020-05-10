@@ -3,7 +3,7 @@ import { Messages } from "./Messages";
 
 console.log("child start");
 
-const receiver = new Receiver<Messages>()
+const receiver = Receiver<Messages>()
   // .on("abc", _ => {}) // fel
   .on("foo", foo)
   .on("bar", bar);

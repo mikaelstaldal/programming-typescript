@@ -1,24 +1,29 @@
-export class Sender<Messages extends Record<PropertyKey, object>> {
-  constructor(private _send: (message: object) => void) {}
+export function Sender<Messages extends Record<PropertyKey, object>>(
+  _send: (message: object) => void
+) {
+  const send = <K extends keyof Messages>(type: K, data: Messages[K]) => {
+    _send({ type, data });
+  };
 
-  send<K extends keyof Messages>(type: K, data: Messages[K]) {
-    this._send({ type, data });
-  }
+  return { send } as const;
 }
 
-export class Receiver<Messages extends Record<PropertyKey, object>> {
-  private events = new Map<keyof Messages, (data: any) => void>();
+export function Receiver<Messages extends Record<PropertyKey, object>>() {
+  const events = new Map<keyof Messages, (data: any) => void>();
 
-  on<K extends keyof Messages>(type: K, listener: (data: Messages[K]) => void) {
-    this.events.set(type, listener);
-    return this;
-  }
+  const on = <K extends keyof Messages>(type: K, listener: (data: Messages[K]) => void) => {
+    events.set(type, listener);
+    return me;
+  };
 
-  readonly dispatch = (message: any) => {
+  const dispatch = (message: any) => {
     try {
-      this.events.get(message.type)?.(message.data);
+      events.get(message.type)?.(message.data);
     } catch (e) {
       console.error(e);
     }
   };
+
+  const me = { on, dispatch } as const;
+  return me;
 }
